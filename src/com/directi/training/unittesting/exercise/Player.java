@@ -5,10 +5,18 @@ import java.util.ArrayList;
 public class Player
 {
     ArrayList<Card> cards;
+    private CardDealer cardDealer;
 
-    public Player()
+    Player()
     {
         this.cards = new ArrayList<>();
+        cardDealer = new CardDealer();
+    }
+
+    public Player(CardDealer cardDealer)
+    {
+        this.cards = new ArrayList<>();
+        this.cardDealer = cardDealer;
     }
 
     public int value()
@@ -30,14 +38,14 @@ public class Player
         return sum;
     }
 
-    public boolean isBust()
+    private boolean isBust()
     {
         return value() < 0;
     }
 
     public void deal()
     {
-        Card card = CardDealer.deal();
+        Card card = cardDealer.deal();
         cards.add(card);
         if (isBust()) {
             throw new PlayerBustException();

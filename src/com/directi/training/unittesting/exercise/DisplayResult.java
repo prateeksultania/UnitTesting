@@ -7,7 +7,17 @@ import java.sql.SQLException;
 
 public class DisplayResult
 {
-    private Dao dao = new Dao();
+    private Dao dao;
+
+    DisplayResult()
+    {
+        dao = new Dao();
+    }
+
+    public DisplayResult(Dao dao)
+    {
+        this.dao = dao;
+    }
 
     public Result result(Player better, Player dealer)
     {
@@ -39,11 +49,11 @@ public class DisplayResult
         private Connection con;
         private PreparedStatement st;
 
-        public Dao()
+        Dao()
         {
             try {
                 con = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/blackjack", "root", "");
+                    .getConnection("jdbc:mysql://localhost:3306/blackjack", "root", "root");
             } catch (Exception e) {
                 e.printStackTrace();
             }

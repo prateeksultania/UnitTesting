@@ -2,7 +2,7 @@ package com.directi.training.unittesting.exercise;
 
 public class CardDealer
 {
-    public static Card deal()
+    public Card deal()
     {
         double d;
         d = Math.random();
